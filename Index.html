@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LATO MILK</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: #fcf8f2;
+border: 15px solid #d4af37;
+} 
+
+body {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+header {
+text-align: center;
+padding: 25px;
+background-color: #ffffff;
+border-bottom: 3px solid #d4af37;
+box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+header img {
+width: 140px;
+height: auto;
+margin-bottom: 15px;
+}
+
+nav a {
+margin: 0 20px;
+text-decoration: none;
+color: #1a1917;
+font-weight: bold;
+font-size: 1.1em;
+transition: color 0.3s;
+}
+
+nav a:hover {
+color: #d4af37;
+}
+
+main {
+flex: 1;
+padding: 40px;
+display: flex;
+flex-direction: column;
+gap: 30px;
+max-width: 1200px;
+margin: 0 auto;
+width: 100%;
+}
+
+.top-row {
+width: 100%;
+height: 450px;
+text-align: center;
+flex-direction: column;
+}
+
+.still-photo {
+width: 100%;
+height: 100%;
+border-radius: 12px;
+overflow: hidden;
+border: 3px solid #d4af37;
+box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.still-photo img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.bottom-row {
+display: flex;
+gap: 30px;
+width: 100%;
+height: 350px;
+}
+
+.sliding-container {
+flex: 1;
+height: 100%;
+position: relative;
+overflow: hidden;
+border-radius: 12px;
+border: 3px solid #d4af37;
+background-color: #e0dacf;
+box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.slide-wrapper {
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+animation: slideUp 12s linear infinite;
+}
+
+.slide-wrapper img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+@keyframes slideUp {
+0% { transform: translateY(0); }
+100% { transform: translateY(-50%); }
+}
+
+.company-info {
+width: 100%;
+background-color: #ffffff;
+padding: 30px;
+border-radius: 12px;
+border: 2px solid #d4af37;
+box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+line-height: 1.6;
+color: #333;
+}
+
+.company-info h2 {
+color: #d4af37;
+margin-bottom: 10px;
+}
+
+footer {
+text-align: center;
+padding: 25px;
+background-color: #ffffff;
+border-top: 3px solid #d4af37;
+color: #1a1917;
+box-shadow: 0 -4px 6px rgba(0,0,0,0.05);
+}
+
+footer div {
+margin-bottom: 8px;
+font-size: 1.1em;
+font-weight: bold;
+}
+
+footer p {
+font-size: 1em;
+}
+
+@media (max-width: 900px) {
+.top-row { height: 300px; }
+.bottom-row { flex-direction: column; height: auto; }
+.sliding-container { height: 300px; }
+}
+
+@media (max-width: 600px) {
+nav a { margin: 0 10px; font-size: 0.9em; }
+html { border: 5px solid #d4af37; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<img src="./image 1 (9).jpeg" alt="Lato Logo">
+<nav>
+<a href="Home">Home</a>
+<a href="About Us">About Us</a>
+<a href="Service">Our Products</a>
+<a href="Gallery">Media Center</a>
+<a href="News & Updates">Branches & Depots</a>
+<a href="Contact Us">Contact Us</a>
+</nav>
+</header>
+
+<main>
+<div class="top-row">
+    <div>
+        <h1>LATO MILK UGANDA LTD</h1> <br
+        <p>The foundation of a healthy lifestyle</p> <br> 
+    </div>
+<div class="still-photo">
+<img src="./IWMP-Mockup-Combo.png" alt="Still Photo">
+</div>
+</div>
+
+<div class="bottom-row">
+<div class="sliding-container">
+<div class="slide-wrapper">
+<img src="./image 1 (12).jpeg" alt="Sliding Photo 1">
+<img src="./Kid.png" alt="Sliding Photo 2">
+</div>
+</div>
+<div class="sliding-container">
+<div class="slide-wrapper">
+<img src="./image 1 (8).jpeg" alt="Sliding Photo 3">
+<img src="./Flavoured milk.jpg" alt="Sliding Photo 4">
+</div>
+</div>
+</div>
+
+<div class="company-info">
+<h2>LATO MILK: Pure & Nutritious</h2>
+<p>Welcome to Lato Milk, your favorite family nutritious food supply. We are dedicated to providing the highest quality dairy products, sourced from the finest farms. Our legacy is built on purity, trust, and health. From fresh milk to creamy yogurts and rich powdered milk, we serve you to the maximum to help your family grow super stronger every day.</p>
+</div>
+</main>
+
+<footer>
+<div>CONTACT US ON: 0776-789087 / 0700-564321</div>
+<p>EMAIL: latomilk.com</p>
+</footer>
+
+</body>
+</html>
