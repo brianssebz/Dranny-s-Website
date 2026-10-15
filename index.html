@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LATO MILK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 * {
 margin: 0;
@@ -16,6 +19,7 @@ html {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 background-color: #fcf8f2;
 border: 15px solid #d4af37;
+scroll-behavior: smooth;
 } 
 
 body {
@@ -24,6 +28,7 @@ flex-direction: column;
 min-height: 100vh;
 }
 
+/* ---------- HEADER + NAVIGATION ---------- */
 header {
 text-align: center;
 padding: 25px;
@@ -38,19 +43,48 @@ height: auto;
 margin-bottom: 15px;
 }
 
+nav {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px;
+max-width: 1100px;
+margin: 0 auto;
+padding: 8px;
+background-color: #fcf8f2;
+border: 2px solid #d4af37;
+border-radius: 999px;
+}
+
 nav a {
-margin: 0 20px;
+padding: 10px 22px;
+border-radius: 999px;
 text-decoration: none;
 color: #1a1917;
-font-weight: bold;
-font-size: 1.1em;
-transition: color 0.3s;
+font-weight: 700;
+font-size: 1.05em;
+border: 2px solid transparent;
+transition: background-color 0.25s, color 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
 
 nav a:hover {
-color: #d4af37;
+background-color: #ffffff;
+border-color: #d4af37;
+color: #1a1917;
 }
 
+nav a.active {
+background-color: #d4af37;
+color: #1a1917;
+box-shadow: 0 4px 10px rgba(212,175,55,0.45);
+}
+
+nav a:focus-visible {
+outline: 3px solid #1a1917;
+outline-offset: 2px;
+}
+
+/* ---------- MAIN ---------- */
 main {
 flex: 1;
 padding: 40px;
@@ -62,16 +96,76 @@ margin: 0 auto;
 width: 100%;
 }
 
+section, .top-row, .bottom-row, .company-info {
+scroll-margin-top: 20px;
+}
+
+/* ---------- TITLE + SUBTITLE ---------- */
 .top-row {
 width: 100%;
-height: 450px;
 text-align: center;
+display: flex;
 flex-direction: column;
+}
+
+.hero-title {
+padding: 10px 0 34px;
+}
+
+.hero-title h1 {
+font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+font-weight: 800;
+font-size: clamp(2.1rem, 6vw, 4rem);
+line-height: 1.08;
+letter-spacing: 0.06em;
+color: #1a1917;
+}
+
+.hero-title h1 small {
+display: block;
+margin-top: 8px;
+font-size: 0.42em;
+font-weight: 600;
+letter-spacing: 0.42em;
+color: #8a6d12;
+}
+
+.hero-title .rule {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 14px;
+margin: 18px auto 14px;
+width: min(420px, 80%);
+}
+
+.hero-title .rule::before,
+.hero-title .rule::after {
+content: "";
+flex: 1;
+height: 2px;
+background: #d4af37;
+}
+
+.hero-title .rule i {
+width: 11px;
+height: 11px;
+background: #d4af37;
+transform: rotate(45deg);
+}
+
+.hero-title p {
+font-family: 'Playfair Display', Georgia, serif;
+font-style: italic;
+font-weight: 600;
+font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+color: #4a3f1c;
+letter-spacing: 0.03em;
 }
 
 .still-photo {
 width: 100%;
-height: 100%;
+height: 450px;
 border-radius: 12px;
 overflow: hidden;
 border: 3px solid #d4af37;
@@ -82,6 +176,24 @@ box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 width: 100%;
 height: 100%;
 object-fit: cover;
+
+}
+
+/* ---------- SPACE + HEADING BETWEEN STILL PHOTO AND SLIDERS ---------- */
+.gallery-heading {
+margin-top: 40px;
+text-align: center;
+}
+
+.gallery-heading h2 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: clamp(1.5rem, 3vw, 2rem);
+color: #1a1917;
+}
+
+.gallery-heading p {
+margin-top: 6px;
+color: #5b5340;
 }
 
 .bottom-row {
@@ -89,6 +201,7 @@ display: flex;
 gap: 30px;
 width: 100%;
 height: 350px;
+margin-top: 0;
 }
 
 .sliding-container {
@@ -121,6 +234,7 @@ object-fit: cover;
 100% { transform: translateY(-50%); }
 }
 
+/* ---------- COMPANY INFORMATION ---------- */
 .company-info {
 width: 100%;
 background-color: #ffffff;
@@ -130,13 +244,237 @@ border: 2px solid #d4af37;
 box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 line-height: 1.6;
 color: #333;
+margin-top: 20px;
 }
 
 .company-info h2 {
-color: #d4af37;
+color: #8a6d12;
+margin-bottom: 10px;
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.7rem;
+}
+
+.company-info p + p {
+margin-top: 12px;
+}
+
+.info-section {
+width: 100%;
+margin-top: 30px;
+}
+
+.info-section > h2 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: clamp(1.6rem, 3vw, 2.1rem);
+color: #1a1917;
+padding-bottom: 10px;
+margin-bottom: 22px;
+border-bottom: 3px solid #d4af37;
+}
+
+.info-section > .lead {
+max-width: 75ch;
+line-height: 1.65;
+color: #3a362c;
+margin: -6px 0 22px;
+}
+
+/* Key figures: one band, separated by gold rules */
+.figures {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+background-color: #ffffff;
+border: 2px solid #d4af37;
+border-radius: 12px;
+margin-top: 30px;
+}
+
+.figures div {
+padding: 24px 16px;
+text-align: center;
+border-right: 2px solid #efe3b8;
+}
+
+.figures div:last-child { border-right: none; }
+
+.figures strong {
+display: block;
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 2.3rem;
+color: #1a1917;
+line-height: 1.1;
+}
+
+.figures span {
+display: block;
+margin-top: 6px;
+font-size: 0.95rem;
+color: #5b5340;
+}
+
+/* Mission and vision */
+.statements {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 30px;
+}
+
+.statement {
+padding: 8px 0 8px 24px;
+border-left: 6px solid #d4af37;
+}
+
+.statement h3 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.5rem;
+color: #1a1917;
+margin-bottom: 8px;
+}
+
+.statement p {
+line-height: 1.65;
+color: #3a362c;
+font-size: 1.05rem;
+}
+
+/* Legacy timeline */
+.timeline {
+list-style: none;
+position: relative;
+margin-left: 12px;
+padding-left: 34px;
+border-left: 3px solid #d4af37;
+}
+
+.timeline li {
+position: relative;
+padding-bottom: 26px;
+}
+
+.timeline li:last-child { padding-bottom: 0; }
+
+.timeline li::before {
+content: "";
+position: absolute;
+left: -45px;
+top: 4px;
+width: 15px;
+height: 15px;
+background-color: #fcf8f2;
+border: 3px solid #d4af37;
+border-radius: 50%;
+}
+
+.timeline time {
+font-family: 'Playfair Display', Georgia, serif;
+font-weight: 800;
+font-size: 1.35rem;
+color: #8a6d12;
+}
+
+.timeline p {
+margin-top: 4px;
+line-height: 1.6;
+color: #3a362c;
+max-width: 80ch;
+}
+
+/* Factories, branches and depots */
+.places {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+background-color: #ffffff;
+border: 2px solid #d4af37;
+border-radius: 12px;
+overflow: hidden;
+}
+
+.place {
+padding: 26px 24px;
+border-right: 2px solid #efe3b8;
+}
+
+.place:last-child { border-right: none; }
+
+.place h3 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.3rem;
+color: #1a1917;
+margin-bottom: 4px;
+}
+
+.place .where {
+font-weight: 700;
+color: #8a6d12;
 margin-bottom: 10px;
 }
 
+.place p, .place li {
+line-height: 1.55;
+color: #3a362c;
+}
+
+.place ul {
+margin-top: 8px;
+padding-left: 18px;
+}
+
+.subheading {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.35rem;
+color: #1a1917;
+margin: 30px 0 12px;
+}
+
+/* Raw materials and market table */
+.table-wrap {
+overflow-x: auto;
+border: 2px solid #d4af37;
+border-radius: 12px;
+background-color: #ffffff;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+min-width: 640px;
+}
+
+th {
+text-align: left;
+background-color: #d4af37;
+color: #1a1917;
+padding: 14px 16px;
+font-size: 1rem;
+}
+
+td {
+padding: 14px 16px;
+vertical-align: top;
+line-height: 1.5;
+color: #3a362c;
+border-top: 1px solid #efe3b8;
+}
+
+td:first-child {
+font-weight: 700;
+color: #1a1917;
+white-space: nowrap;
+}
+
+tbody tr:nth-child(even) { background-color: #fcf8f2; }
+
+.market-note {
+margin-top: 18px;
+padding: 16px 20px;
+background-color: #fcf8f2;
+border: 2px dashed #d4af37;
+border-radius: 12px;
+line-height: 1.6;
+color: #3a362c;
+}
+
+/* ---------- FOOTER ---------- */
 footer {
 text-align: center;
 padding: 25px;
@@ -156,15 +494,30 @@ footer p {
 font-size: 1em;
 }
 
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px) {
-.top-row { height: 300px; }
+.still-photo { height: 300px; }
 .bottom-row { flex-direction: column; height: auto; }
 .sliding-container { height: 300px; }
+.figures { grid-template-columns: repeat(2, 1fr); }
+.figures div:nth-child(2) { border-right: none; }
+.figures div:nth-child(-n+2) { border-bottom: 2px solid #efe3b8; }
+.statements { grid-template-columns: 1fr; }
+.places { grid-template-columns: 1fr; }
+.place { border-right: none; border-bottom: 2px solid #efe3b8; }
+.place:last-child { border-bottom: none; }
+nav { border-radius: 24px; }
 }
 
 @media (max-width: 600px) {
-nav a { margin: 0 10px; font-size: 0.9em; }
+main { padding: 24px 16px; }
+nav a { padding: 8px 14px; font-size: 0.92em; }
 html { border: 5px solid #d4af37; }
+.company-info { padding: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+html { scroll-behavior: auto; }
 }
 </style>
 </head>
@@ -172,52 +525,183 @@ html { border: 5px solid #d4af37; }
 
 <header>
 <img src="./image 1 (9).jpeg" alt="Lato Logo">
-<nav>
-<a href="Home">Home</a>
-<a href="About Us">About Us</a>
-<a href="Service">Our Products</a>
-<a href="Gallery">Media Center</a>
-<a href="News & Updates">Branches & Depots</a>
-<a href="Contact Us">Contact Us</a>
+<nav id="site-nav" aria-label="Main navigation">
+<a href="#home" class="active">Home</a>
+<a href="#about">About Us</a>
+<a href="#products">Our Products</a>
+<a href="#media">Media Center</a>
+<a href="#branches">Branches &amp; Depots</a>
+<a href="#contact">Contact Us</a>
 </nav>
 </header>
 
 <main>
-<div class="top-row">
-    <div>
-        <h1>LATO MILK UGANDA LTD</h1> <br
-        <p>The foundation of a healthy lifestyle</p> <br> 
+<div class="top-row" id="home">
+    <div class="hero-title">
+        <h1>LATO MILK <small>UGANDA LTD</small></h1>
+        <div class="rule" aria-hidden="true"><i></i></div>
+        <p>The foundation of a healthy lifestyle</p>
     </div>
-<div class="still-photo">
-<img src="./IWMP-Mockup-Combo.png" alt="Still Photo">
+<div class="still-photo" id="products">
+<img src="./Lato_Product_Collage_4K.png" alt="Still Photo">
 </div>
 </div>
 
-<div class="bottom-row">
+<div class="gallery-heading">
+<h2>Product Gallery</h2>
+<p>Milk powders, liquid milk, yoghurt, butter and infant cereals from the Lato family.</p>
+</div>
+
+<div class="bottom-row" id="media">
 <div class="sliding-container">
 <div class="slide-wrapper">
 <img src="./image 1 (12).jpeg" alt="Sliding Photo 1">
 <img src="./Kid.png" alt="Sliding Photo 2">
+<img src="./Butter_Unsalted.jpg" alt="Sliding Photo 3">
+<img src="./IWMP-Mockup-Combo.png" alt="Sliding Photo 4">
+<img src="./Lato-Grow-Fortified-Milk-Powder.png" alt="Sliding Photo 3">
+<img src="./lato_milk_cover.jpg" alt="Sliding Photo 4">
+<img src="./Yoghurt-FeaturedImage.jpg" alt="Sliding Photo 3">
+<img src="./image 1 (12).jpeg" alt="Sliding Photo 4">
 </div>
 </div>
 <div class="sliding-container">
 <div class="slide-wrapper">
 <img src="./image 1 (8).jpeg" alt="Sliding Photo 3">
 <img src="./Flavoured milk.jpg" alt="Sliding Photo 4">
+<img src="./LiquidMilk-1.png" alt="Sliding Photo 3">
+<img src="./nadolac-400g.jpg" alt="Sliding Photo 4">
+<img src="./nadolac-400g.jpg" alt="Sliding Photo 3">
+<img src="./Nedolac-Wheat-Banana.jpg" alt="Sliding Photo 4">
+<img src="./Porridge-Web.png" alt="Sliding Photo 3">
+<img src="./image 1 (8).jpeg" alt="Sliding Photo 4">
 </div>
 </div>
 </div>
 
-<div class="company-info">
-<h2>LATO MILK: Pure & Nutritious</h2>
+<!-- ABOUT + BACKGROUND -->
+<div class="company-info" id="about">
+<h2>LATO MILK: Pure &amp; Nutritious</h2>
 <p>Welcome to Lato Milk, your favorite family nutritious food supply. We are dedicated to providing the highest quality dairy products, sourced from the finest farms. Our legacy is built on purity, trust, and health. From fresh milk to creamy yogurts and rich powdered milk, we serve you to the maximum to help your family grow super stronger every day.</p>
+<p><strong>Company background.</strong> Lato is the consumer brand of Pearl Dairy Farms Limited, a Ugandan dairy processor with its head office and main factory at Biharwe, Mbarara. The foundation of the milk processing plant was laid in 2009, and the brand has since grown from bulk milk powder into instant milk powders, UHT milk, flavoured milk, yoghurt, butter, ghee, fortified child nutrition and Nadolac infant cereals.</p>
 </div>
+
+<div class="figures" aria-label="Lato Milk at a glance">
+<div><strong>2009</strong><span>Processing plant foundation laid in Mbarara</span></div>
+<div><strong>10,000+</strong><span>Smallholder dairy farmers in Uganda</span></div>
+<div><strong>5,000+</strong><span>Smallholder dairy farmers in Kenya</span></div>
+<div><strong>2</strong><span>Production facilities: Uganda and Kenya</span></div>
+</div>
+
+<!-- MISSION + VISION -->
+<section class="info-section" id="mission">
+<h2>Our Mission and Vision</h2>
+<div class="statements">
+<div class="statement">
+<h3>Mission</h3>
+<p>To provide safe, nutritious and affordable dairy products that help families grow stronger every day, while supporting the farmers who supply our milk.</p>
+</div>
+<div class="statement">
+<h3>Vision</h3>
+<p>To be the most trusted dairy and nutrition brand in East Africa and beyond, known for purity, quality and a healthy start for every family.</p>
+</div>
+</div>
+</section>
+
+<!-- LEGACY -->
+<section class="info-section" id="legacy">
+<h2>Our Legacy</h2>
+<p class="lead">More than a decade of growth built on farmers, quality and trust. Lato has helped turn Uganda into a net exporter of dairy products in the region, and the company says farmers today earn about three times what their milk fetched before the plant opened.</p>
+<ol class="timeline">
+<li><time>2009</time><p>The foundation of the milk processing plant is laid at Mbarara, followed by commercial production of whole and skimmed milk powder in bulk packs.</p></li>
+<li><time>2012</time><p>Lato is established as the consumer brand of Pearl Dairy Farms, with instant full cream milk powder in 900 g and 400 g tins and 15 g sachets.</p></li>
+<li><time>2016</time><p>The liquid milk processing unit is inaugurated by President Yoweri Museveni, and 90-day UHT milk is introduced in 500 ml and 250 ml packs.</p></li>
+<li><time>2018</time><p>Lato Butter (salted and unsalted, 250 g and 500 g) and Lato Flavoured Milk in strawberry, vanilla and chocolate join the range. The Farmers Community Program and the Lato Help Program, which finances corrective surgeries for children with disabilities, begin.</p></li>
+<li><time>2021</time><p>Lato makes its first milk powder export to Zambia, 50 tonnes by road, and unveils a new line able to pack 130,000 litres of milk a day.</p></li>
+<li><time>2023</time><p>Lato Grow, a fortified instant milk powder for children aged 3 to 5, is introduced, and Lato agrees with Kenya's state financier KDC to invest in dairy ventures in Kenya.</p></li>
+</ol>
+</section>
+
+<!-- FACTORIES, BRANCHES, DEPOTS -->
+<section class="info-section" id="branches">
+<h2>Factories, Branches and Depots</h2>
+<div class="places">
+<div class="place">
+<h3>Head Office and Main Factory</h3>
+<p class="where">Biharwe, Mbarara, Uganda</p>
+<p>The company's primary plant, where milk is received from farmers and processed into the Lato range.</p>
+<ul>
+<li>Milk powders (whole and skimmed)</li>
+<li>UHT liquid and flavoured milk</li>
+<li>Yoghurt, butter and ghee</li>
+</ul>
+</div>
+<div class="place">
+<h3>Kenya Facility</h3>
+<p class="where">Kenya</p>
+<p>A second production site that supports supply to the Kenyan market and the wider East African region, backed by a partnership with Kenya Development Corporation.</p>
+</div>
+<div class="place">
+<h3>Regional Depots</h3>
+<!-- EDIT: replace the four regions below with your real depot towns and addresses -->
+<p class="where">Central, Western, Eastern and Northern Uganda</p>
+<p>Depots hold stock close to distributors, wholesalers and retailers so that Lato products reach shops and families quickly and fresh.</p>
+</div>
+</div>
+
+<h3 class="subheading">Markets we serve</h3>
+<p class="lead" style="margin:0;">Uganda is our home market. Lato products are also sold in Kenya, and milk powder has been exported to Zambia since 2021.</p>
+</section>
+
+<!-- RAW MATERIALS + MARKET -->
+<section class="info-section" id="raw-materials">
+<h2>Raw Materials and Available Market</h2>
+<p class="lead">Quality starts at the farm. Fresh cow's milk is our main raw material, and every Lato product also draws on a range of other ingredients that are available in the region.</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Raw material</th><th>Used in</th><th>Where it comes from</th><th>Market availability</th></tr>
+</thead>
+<tbody>
+<tr><td>Fresh cow's milk</td><td>Milk powders, UHT milk, yoghurt, butter, ghee</td><td>Over 10,000 smallholder farmers in Uganda and over 5,000 in Kenya, supplying through collection points and cooperatives</td><td>Available all year, with the highest supply in the rainy seasons. Farm-gate prices have risen from about UGX 400 to over UGX 1,100 per litre since the plant opened.</td></tr>
+<tr><td>Cereals: wheat, maize, sorghum</td><td>Nadolac infant cereals, instant porridge</td><td>Local farmers and grain markets, plus regional suppliers</td><td>Maize and sorghum are widely grown in Uganda; wheat is sourced from regional suppliers.</td></tr>
+<tr><td>Bananas and fruit</td><td>Nadolac Wheat &amp; Banana, fruit yoghurts</td><td>Local growers and fruit markets</td><td>Bananas are available all year round; seasonal fruits are sourced when in season.</td></tr>
+<tr><td>Sugar, cocoa and flavourings</td><td>Flavoured milk, sweetened yoghurt, porridge</td><td>Ugandan sugar producers and approved ingredient suppliers</td><td>Steady supply from local and regional markets.</td></tr>
+<tr><td>Vitamins and minerals</td><td>Lato Grow, fortified milk and cereals</td><td>Approved nutrition ingredient suppliers</td><td>Sourced in bulk under quality-assurance checks.</td></tr>
+<tr><td>Packaging materials</td><td>Tins, sachets, cartons, tubs and butter wraps</td><td>Regional and international packaging suppliers</td><td>Contracted supply to keep production running all year.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="market-note">
+<strong>Opportunity for farmers and suppliers.</strong> Demand for milk keeps growing with the factory's capacity, so Lato continues to buy from smallholder farmers and to work with suppliers of grains, fruit and packaging. Farmers and suppliers who want to join the supply chain can reach us through the contact details below.
+</div>
+</section>
 </main>
 
-<footer>
+<footer id="contact">
 <div>CONTACT US ON: 0776-789087 / 0700-564321</div>
 <p>EMAIL: latomilk.com</p>
 </footer>
+
+<script>
+// Highlight the nav link of the section currently on screen
+(function () {
+  var links = document.querySelectorAll('#site-nav a');
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var targets = Object.keys(map).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        links.forEach(function (a) { a.classList.remove('active'); });
+        map[e.target.id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  targets.forEach(function (t) { io.observe(t); });
+})();
+</script>
 
 </body>
 </html>
