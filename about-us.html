@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | LATO MILK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: #fcf8f2;
+border: 15px solid #d4af37;
+scroll-behavior: smooth;
+} 
+
+body {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+/* ---------- HEADER + NAVIGATION ---------- */
+header {
+text-align: center;
+padding: 25px;
+background-color: #ffffff;
+border-bottom: 3px solid #d4af37;
+box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+header img {
+width: 140px;
+height: auto;
+margin-bottom: 15px;
+}
+
+nav {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px;
+max-width: 1100px;
+margin: 0 auto;
+padding: 8px;
+background-color: #fcf8f2;
+border: 2px solid #d4af37;
+border-radius: 999px;
+}
+
+nav a {
+padding: 10px 22px;
+border-radius: 999px;
+text-decoration: none;
+color: #1a1917;
+font-weight: 700;
+font-size: 1.05em;
+border: 2px solid transparent;
+transition: background-color 0.25s, color 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+nav a:hover {
+background-color: #ffffff;
+border-color: #d4af37;
+color: #1a1917;
+}
+
+nav a.active {
+background-color: #d4af37;
+color: #1a1917;
+box-shadow: 0 4px 10px rgba(212,175,55,0.45);
+}
+
+nav a:focus-visible {
+outline: 3px solid #1a1917;
+outline-offset: 2px;
+}
+
+/* ---------- MAIN ---------- */
+main {
+flex: 1;
+padding: 40px;
+display: flex;
+flex-direction: column;
+gap: 30px;
+max-width: 1200px;
+margin: 0 auto;
+width: 100%;
+}
+
+section, .top-row, .bottom-row, .company-info {
+scroll-margin-top: 20px;
+}
+
+/* ---------- TITLE + SUBTITLE ---------- */
+.top-row {
+width: 100%;
+text-align: center;
+display: flex;
+flex-direction: column;
+}
+
+.hero-title {
+padding: 10px 0 34px;
+}
+
+.hero-title h1 {
+font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+font-weight: 800;
+font-size: clamp(2.1rem, 6vw, 4rem);
+line-height: 1.08;
+letter-spacing: 0.06em;
+color: #1a1917;
+}
+
+.hero-title h1 small {
+display: block;
+margin-top: 8px;
+font-size: 0.42em;
+font-weight: 600;
+letter-spacing: 0.42em;
+color: #8a6d12;
+}
+
+.hero-title .rule {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 14px;
+margin: 18px auto 14px;
+width: min(420px, 80%);
+}
+
+.hero-title .rule::before,
+.hero-title .rule::after {
+content: "";
+flex: 1;
+height: 2px;
+background: #d4af37;
+}
+
+.hero-title .rule i {
+width: 11px;
+height: 11px;
+background: #d4af37;
+transform: rotate(45deg);
+}
+
+.hero-title p {
+font-family: 'Playfair Display', Georgia, serif;
+font-style: italic;
+font-weight: 600;
+font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+color: #4a3f1c;
+letter-spacing: 0.03em;
+}
+
+.still-photo {
+width: 100%;
+height: 450px;
+border-radius: 12px;
+overflow: hidden;
+border: 3px solid #d4af37;
+box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.still-photo img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+
+}
+
+/* ---------- SPACE + HEADING BETWEEN STILL PHOTO AND SLIDERS ---------- */
+.gallery-heading {
+margin-top: 40px;
+text-align: center;
+}
+
+.gallery-heading h2 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: clamp(1.5rem, 3vw, 2rem);
+color: #1a1917;
+}
+
+.gallery-heading p {
+margin-top: 6px;
+color: #5b5340;
+}
+
+.bottom-row {
+display: flex;
+gap: 30px;
+width: 100%;
+height: 350px;
+margin-top: 0;
+}
+
+.sliding-container {
+flex: 1;
+height: 100%;
+position: relative;
+overflow: hidden;
+border-radius: 12px;
+border: 3px solid #d4af37;
+background-color: #e0dacf;
+box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.slide-wrapper {
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+animation: slideUp 21s ease-in-out infinite;
+}
+
+.slide-wrapper img {
+width: 100%;
+height: 100%;
+flex: 0 0 100%;
+object-fit: cover;
+}
+
+/* Each photo stays for a moment, then slides up to the next one.
+   7 photos + a repeat of the first = a seamless endless loop. */
+@keyframes slideUp {
+0%, 11.43%   { transform: translateY(0); }
+14.29%, 25.71% { transform: translateY(-100%); }
+28.57%, 40%    { transform: translateY(-200%); }
+42.86%, 54.29% { transform: translateY(-300%); }
+57.14%, 68.57% { transform: translateY(-400%); }
+71.43%, 82.86% { transform: translateY(-500%); }
+85.71%, 97.14% { transform: translateY(-600%); }
+100%           { transform: translateY(-700%); }
+}
+
+/* ---------- COMPANY INFORMATION ---------- */
+.company-info {
+width: 100%;
+background-color: #ffffff;
+padding: 30px;
+border-radius: 12px;
+border: 2px solid #d4af37;
+box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+line-height: 1.6;
+color: #333;
+margin-top: 20px;
+}
+
+.company-info h2 {
+color: #8a6d12;
+margin-bottom: 10px;
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.7rem;
+}
+
+.company-info p + p {
+margin-top: 12px;
+}
+
+.info-section {
+width: 100%;
+margin-top: 30px;
+}
+
+.info-section > h2 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: clamp(1.6rem, 3vw, 2.1rem);
+color: #1a1917;
+padding-bottom: 10px;
+margin-bottom: 22px;
+border-bottom: 3px solid #d4af37;
+}
+
+.info-section > .lead {
+max-width: 75ch;
+line-height: 1.65;
+color: #3a362c;
+margin: -6px 0 22px;
+}
+
+/* Key figures: one band, separated by gold rules */
+.figures {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+background-color: #ffffff;
+border: 2px solid #d4af37;
+border-radius: 12px;
+margin-top: 30px;
+}
+
+.figures div {
+padding: 24px 16px;
+text-align: center;
+border-right: 2px solid #efe3b8;
+}
+
+.figures div:last-child { border-right: none; }
+
+.figures strong {
+display: block;
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 2.3rem;
+color: #1a1917;
+line-height: 1.1;
+}
+
+.figures span {
+display: block;
+margin-top: 6px;
+font-size: 0.95rem;
+color: #5b5340;
+}
+
+/* Mission and vision */
+.statements {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 30px;
+}
+
+.statement {
+padding: 8px 0 8px 24px;
+border-left: 6px solid #d4af37;
+}
+
+.statement h3 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.5rem;
+color: #1a1917;
+margin-bottom: 8px;
+}
+
+.statement p {
+line-height: 1.65;
+color: #3a362c;
+font-size: 1.05rem;
+}
+
+/* Legacy timeline */
+.timeline {
+list-style: none;
+position: relative;
+margin-left: 12px;
+padding-left: 34px;
+border-left: 3px solid #d4af37;
+}
+
+.timeline li {
+position: relative;
+padding-bottom: 26px;
+}
+
+.timeline li:last-child { padding-bottom: 0; }
+
+.timeline li::before {
+content: "";
+position: absolute;
+left: -45px;
+top: 4px;
+width: 15px;
+height: 15px;
+background-color: #fcf8f2;
+border: 3px solid #d4af37;
+border-radius: 50%;
+}
+
+.timeline time {
+font-family: 'Playfair Display', Georgia, serif;
+font-weight: 800;
+font-size: 1.35rem;
+color: #8a6d12;
+}
+
+.timeline p {
+margin-top: 4px;
+line-height: 1.6;
+color: #3a362c;
+max-width: 80ch;
+}
+
+/* Factories, branches and depots */
+.places {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+background-color: #ffffff;
+border: 2px solid #d4af37;
+border-radius: 12px;
+overflow: hidden;
+}
+
+.place {
+padding: 26px 24px;
+border-right: 2px solid #efe3b8;
+}
+
+.place:last-child { border-right: none; }
+
+.place h3 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.3rem;
+color: #1a1917;
+margin-bottom: 4px;
+}
+
+.place .where {
+font-weight: 700;
+color: #8a6d12;
+margin-bottom: 10px;
+}
+
+.place p, .place li {
+line-height: 1.55;
+color: #3a362c;
+}
+
+.place ul {
+margin-top: 8px;
+padding-left: 18px;
+}
+
+.subheading {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.35rem;
+color: #1a1917;
+margin: 30px 0 12px;
+}
+
+/* Raw materials and market table */
+.table-wrap {
+overflow-x: auto;
+border: 2px solid #d4af37;
+border-radius: 12px;
+background-color: #ffffff;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+min-width: 640px;
+}
+
+th {
+text-align: left;
+background-color: #d4af37;
+color: #1a1917;
+padding: 14px 16px;
+font-size: 1rem;
+}
+
+td {
+padding: 14px 16px;
+vertical-align: top;
+line-height: 1.5;
+color: #3a362c;
+border-top: 1px solid #efe3b8;
+}
+
+td:first-child {
+font-weight: 700;
+color: #1a1917;
+white-space: nowrap;
+}
+
+tbody tr:nth-child(even) { background-color: #fcf8f2; }
+
+.market-note {
+margin-top: 18px;
+padding: 16px 20px;
+background-color: #fcf8f2;
+border: 2px dashed #d4af37;
+border-radius: 12px;
+line-height: 1.6;
+color: #3a362c;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+text-align: center;
+padding: 25px;
+background-color: #ffffff;
+border-top: 3px solid #d4af37;
+color: #1a1917;
+box-shadow: 0 -4px 6px rgba(0,0,0,0.05);
+}
+
+footer div {
+margin-bottom: 8px;
+font-size: 1.1em;
+font-weight: bold;
+}
+
+footer p {
+font-size: 1em;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+.still-photo { height: 300px; }
+.bottom-row { flex-direction: column; height: auto; }
+.sliding-container { height: 300px; }
+.figures { grid-template-columns: repeat(2, 1fr); }
+.figures div:nth-child(2) { border-right: none; }
+.figures div:nth-child(-n+2) { border-bottom: 2px solid #efe3b8; }
+.statements { grid-template-columns: 1fr; }
+.places { grid-template-columns: 1fr; }
+.place { border-right: none; border-bottom: 2px solid #efe3b8; }
+.place:last-child { border-bottom: none; }
+nav { border-radius: 24px; }
+}
+
+@media (max-width: 600px) {
+main { padding: 24px 16px; }
+nav a { padding: 8px 14px; font-size: 0.92em; }
+html { border: 5px solid #d4af37; }
+.company-info { padding: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+html { scroll-behavior: auto; }
+}
+
+/* ---------- LINKS BETWEEN PAGES ---------- */
+header a.logo-link {
+display: inline-block;
+}
+
+.read-more {
+display: inline-block;
+margin-top: 4px;
+padding: 10px 22px;
+border: 2px solid #d4af37;
+border-radius: 999px;
+background-color: #fcf8f2;
+color: #1a1917;
+font-weight: 700;
+text-decoration: none;
+transition: background-color 0.25s, box-shadow 0.25s;
+}
+
+.read-more:hover {
+background-color: #d4af37;
+box-shadow: 0 4px 10px rgba(212,175,55,0.45);
+}
+
+/* ---------- ABOUT PAGE ---------- */
+.page-title {
+text-align: center;
+padding: 10px 0 10px;
+}
+
+.page-title h1 {
+font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+font-weight: 800;
+font-size: clamp(2.1rem, 6vw, 3.6rem);
+line-height: 1.08;
+letter-spacing: 0.06em;
+color: #1a1917;
+}
+
+.page-title h1 small {
+display: block;
+margin-top: 8px;
+font-size: 0.42em;
+font-weight: 600;
+letter-spacing: 0.42em;
+color: #8a6d12;
+}
+
+.page-title .rule {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 14px;
+margin: 18px auto 14px;
+width: min(420px, 80%);
+}
+
+.page-title .rule::before,
+.page-title .rule::after {
+content: "";
+flex: 1;
+height: 2px;
+background: #d4af37;
+}
+
+.page-title .rule i {
+width: 11px;
+height: 11px;
+background: #d4af37;
+transform: rotate(45deg);
+}
+
+.page-title p {
+font-family: 'Playfair Display', Georgia, serif;
+font-style: italic;
+font-weight: 600;
+font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+color: #4a3f1c;
+letter-spacing: 0.03em;
+}
+
+.banner {
+width: 100%;
+height: 380px;
+border-radius: 12px;
+overflow: hidden;
+border: 3px solid #d4af37;
+box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+background-color: #e0dacf;
+}
+
+.banner img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+
+.crumbs {
+font-size: 0.95rem;
+color: #5b5340;
+}
+
+.crumbs a {
+color: #8a6d12;
+font-weight: 700;
+text-decoration: none;
+}
+
+.crumbs a:hover { text-decoration: underline; }
+
+.split {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 40px;
+align-items: center;
+}
+
+.split p {
+line-height: 1.7;
+color: #3a362c;
+font-size: 1.05rem;
+}
+
+.split p + p { margin-top: 14px; }
+
+.split .photo {
+border-radius: 12px;
+overflow: hidden;
+border: 3px solid #d4af37;
+box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+background-color: #e0dacf;
+}
+
+.split .photo img {
+width: 100%;
+height: 100%;
+min-height: 260px;
+max-height: 420px;
+object-fit: cover;
+display: block;
+}
+
+.values {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+gap: 24px;
+}
+
+.value {
+background-color: #ffffff;
+border: 2px solid #d4af37;
+border-top-width: 6px;
+border-radius: 12px;
+padding: 22px;
+box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.value h3 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.35rem;
+color: #1a1917;
+margin-bottom: 8px;
+}
+
+.value p {
+line-height: 1.6;
+color: #3a362c;
+}
+
+.impact {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 28px;
+}
+
+.impact article {
+background-color: #ffffff;
+border: 2px solid #d4af37;
+border-radius: 12px;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.impact img {
+width: 100%;
+height: 190px;
+object-fit: cover;
+display: block;
+background-color: #e0dacf;
+}
+
+.impact .body {
+padding: 20px;
+display: flex;
+flex-direction: column;
+flex: 1;
+}
+
+.impact h3 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.3rem;
+color: #1a1917;
+margin-bottom: 8px;
+}
+
+.impact p {
+line-height: 1.6;
+color: #3a362c;
+flex: 1;
+}
+
+.impact .read-more { align-self: flex-start; margin-top: 14px; }
+
+.next-steps {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 16px;
+margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+.banner { height: 260px; }
+.split { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 600px) {
+.banner { height: 200px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<a class="logo-link" href="Index.html"><img src="./image 1 (9).jpeg" alt="Lato Logo"></a>
+<nav id="site-nav" aria-label="Main navigation">
+<a href="Index.html">Home</a>
+<a href="about-us.html" class="active" aria-current="page">About Us</a>
+<a href="Index.html#products">Our Products</a>
+<a href="Index.html#media">Media Center</a>
+<a href="Index.html#branches">Branches &amp; Depots</a>
+<a href="#contact">Contact Us</a>
+</nav>
+</header>
+
+<main>
+<p class="crumbs"><a href="Index.html">Home</a> &rsaquo; About Us</p>
+
+<div class="page-title">
+<h1>ABOUT US <small>LATO MILK UGANDA LTD</small></h1>
+<div class="rule" aria-hidden="true"><i></i></div>
+<p>The foundation of a happy, healthy lifestyle</p>
+</div>
+
+<div class="banner">
+<img src="https://latomilk.com/wp-content/uploads/2022/07/Title_AboutUs.jpeg" alt="About Lato Milk" onerror="this.onerror=null;this.src='./Lato_Product_Collage_4K.png'">
+</div>
+
+<!-- WHO WE ARE -->
+<section class="info-section" id="who-we-are">
+<h2>Who We Are</h2>
+<div class="split">
+<div>
+<p>Lato is the consumer brand of Pearl Dairy Farms Limited, a Ugandan dairy company with its head office and main factory at Biharwe in Mbarara. Our milk comes straight from the land of milk and honey, from local farmers who deliver fresh cow's milk to our plant.</p>
+<p>From instant milk powders and UHT milk to yoghurt, butter, ghee, fortified child nutrition and Nadolac infant cereals, every product is made to keep the goodness of milk intact and to be pure, tasty and nutritious for families.</p>
+</div>
+<div class="photo">
+<img src="https://latomilk.com/wp-content/uploads/2018/12/About_Us_factory.jpg" alt="The Lato Milk factory in Mbarara" loading="lazy" onerror="this.style.display='none'">
+</div>
+</div>
+</section>
+
+<!-- PURPOSE + PHILOSOPHY -->
+<section class="info-section" id="purpose">
+<h2>Our Purpose and Philosophy</h2>
+<div class="statements">
+<div class="statement">
+<h3>Our Purpose</h3>
+<p>To improve the livelihoods of smallholder farmers across East Africa while helping build a strong, resilient next generation by meeting the nutrition needs of today's children. We aim to become the region's leading nutrition company, offering high-quality products, driving innovation and helping to reduce malnutrition.</p>
+</div>
+<div class="statement">
+<h3>Our Philosophy</h3>
+<p>Our actions are driven by success and a deep desire to serve our customers. We set out to give local dairy farmers in Mbarara a place to process their produce, and we grow a vibrant dairy industry on integrity, speed and character, so the business stays scalable, sustainable and profitable.</p>
+</div>
+</div>
+</section>
+
+<!-- VISION + MISSION -->
+<section class="info-section" id="vision-mission">
+<h2>Our Vision and Mission</h2>
+<div class="statements">
+<div class="statement">
+<h3>Vision</h3>
+<p>To be a leading, benchmark maker and supplier of safe, high-quality dairy products across Africa and around the world.</p>
+</div>
+<div class="statement">
+<h3>Mission</h3>
+<p>To produce and market milk and dairy products that meet international standards, using modern manufacturing technology, high hygiene standards and smart marketing at competitive prices, so that everyone we serve is nourished and delighted.</p>
+</div>
+</div>
+</section>
+
+<!-- BELIEFS -->
+<section class="info-section" id="beliefs">
+<h2>What We Believe In</h2>
+<p class="lead">We work to be the most preferred dairy brand in the world, and to us success means every product is always safe to consume. These five beliefs guide how we work.</p>
+<div class="values">
+<div class="value"><h3>Trust</h3><p>The foundation of every relationship, inside and outside the company. We act with honesty, transparency and integrity, and we keep our promises.</p></div>
+<div class="value"><h3>Inclusion</h3><p>We welcome diversity and make sure everyone feels valued, respected and part of the team.</p></div>
+<div class="value"><h3>Quality</h3><p>We aim for excellence in our products, services and processes, and keep improving to meet or beat expectations.</p></div>
+<div class="value"><h3>Innovation</h3><p>We encourage creativity and keep exploring new ideas and technologies to stay at the front of our industry.</p></div>
+<div class="value"><h3>Excellence</h3><p>We set high standards, celebrate achievements and learn from setbacks so we can always do better.</p></div>
+</div>
+</section>
+
+<!-- IMPACT -->
+<section class="info-section" id="impact">
+<h2>Towards a Healthy Future</h2>
+<p class="lead">Beyond enriching lives, we believe Lato Milk can play a part in enriching communities, good causes and the environment.</p>
+<div class="impact">
+<article>
+<img src="https://latomilk.com/wp-content/uploads/2022/07/LatoHelp_Section.jpeg" alt="Lato Help" loading="lazy" onerror="this.style.display='none'">
+<div class="body">
+<h3>Lato Help</h3>
+<p>An initiative that gives differently-abled children free access to treatment, to improve their lives.</p>
+<a class="read-more" href="https://latomilk.com/our-impact/lato-help/" target="_blank" rel="noopener">See the work &rarr;</a>
+</div>
+</article>
+<article>
+<img src="https://latomilk.com/wp-content/uploads/2022/07/DairyCommunity_Section.jpeg" alt="Farmers Community" loading="lazy" onerror="this.style.display='none'">
+<div class="body">
+<h3>Farmers Community</h3>
+<p>A programme that trains local dairy farmers so they can grow into commercial dairy farmers.</p>
+<a class="read-more" href="https://latomilk.com/our-impact/farmers-community/" target="_blank" rel="noopener">See the work &rarr;</a>
+</div>
+</article>
+<article>
+<img src="https://latomilk.com/wp-content/uploads/2022/07/LatoGreen_Section.jpeg" alt="Lato Green" loading="lazy" onerror="this.style.display='none'">
+<div class="body">
+<h3>Lato Green</h3>
+<p>Work with partner organisations to adopt eco-friendly ways of protecting the environment.</p>
+<a class="read-more" href="https://latomilk.com/our-impact/lato-green/" target="_blank" rel="noopener">See the work &rarr;</a>
+</div>
+</article>
+</div>
+<div class="next-steps">
+<a class="read-more" href="Index.html#legacy">See our legacy timeline</a>
+<a class="read-more" href="Index.html#products">Explore our products</a>
+<a class="read-more" href="Index.html#branches">Find our depots</a>
+</div>
+</section>
+</main>
+
+<footer id="contact">
+<div>CONTACT US ON: 0776-789087 / 0700-564321</div>
+<p>EMAIL: latomilk.com</p>
+</footer>
+
+</body>
+</html>
