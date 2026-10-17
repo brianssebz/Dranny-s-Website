@@ -528,15 +528,38 @@ html { border: 5px solid #d4af37; }
 @media (prefers-reduced-motion: reduce) {
 html { scroll-behavior: auto; }
 }
+
+/* ---------- LINKS BETWEEN PAGES ---------- */
+header a.logo-link {
+display: inline-block;
+}
+
+.read-more {
+display: inline-block;
+margin-top: 4px;
+padding: 10px 22px;
+border: 2px solid #d4af37;
+border-radius: 999px;
+background-color: #fcf8f2;
+color: #1a1917;
+font-weight: 700;
+text-decoration: none;
+transition: background-color 0.25s, box-shadow 0.25s;
+}
+
+.read-more:hover {
+background-color: #d4af37;
+box-shadow: 0 4px 10px rgba(212,175,55,0.45);
+}
 </style>
 </head>
 <body>
 
 <header>
-<img src="./image 1 (9).jpeg" alt="Lato Logo">
+<a class="logo-link" href="Index.html"><img src="./image 1 (9).jpeg" alt="Lato Logo"></a>
 <nav id="site-nav" aria-label="Main navigation">
 <a href="#home" class="active">Home</a>
-<a href="#about">About Us</a>
+<a href="about-us.html">About Us</a>
 <a href="#products">Our Products</a>
 <a href="#media">Media Center</a>
 <a href="#branches">Branches &amp; Depots</a>
@@ -593,6 +616,7 @@ html { scroll-behavior: auto; }
 <h2>LATO MILK: Pure &amp; Nutritious</h2>
 <p>Welcome to Lato Milk, your favorite family nutritious food supply. We are dedicated to providing the highest quality dairy products, sourced from the finest farms. Our legacy is built on purity, trust, and health. From fresh milk to creamy yogurts and rich powdered milk, we serve you to the maximum to help your family grow super stronger every day.</p>
 <p><strong>Company background.</strong> Lato is the consumer brand of Pearl Dairy Farms Limited, a Ugandan dairy processor with its head office and main factory at Biharwe, Mbarara. The foundation of the milk processing plant was laid in 2009, and the brand has since grown from bulk milk powder into instant milk powders, UHT milk, flavoured milk, yoghurt, butter, ghee, fortified child nutrition and Nadolac infant cereals.</p>
+<p><a class="read-more" href="about-us.html">Read our full story &rarr;</a></p>
 </div>
 
 <div class="figures" aria-label="Lato Milk at a glance">
@@ -697,7 +721,7 @@ html { scroll-behavior: auto; }
 (function () {
   var links = document.querySelectorAll('#site-nav a');
   var map = {};
-  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  links.forEach(function (a) { var h = a.getAttribute('href'); if (h.charAt(0) === '#') { map[h.slice(1)] = a; } });
   var targets = Object.keys(map).map(function (id) { return document.getElementById(id); }).filter(Boolean);
   if (!('IntersectionObserver' in window)) return;
   var io = new IntersectionObserver(function (entries) {
